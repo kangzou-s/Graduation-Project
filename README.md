@@ -9,7 +9,7 @@ This is a barebones basis for a student project on image processing with Python 
 
 ## How to use the provided scripts
 Folder [puzzle generator](puzzle_generator) contains:
-1. Script [cut_into_pieces.py](cut_into_pieces) that takes a specified image from folder [pics](pics), a cutting pattern from folder [patterns](patterns) and generates multiple image files each containing one single piece of the puzzle, in the same folder.
+1. Script [cut_into_pieces.py](puzzle_generator/cut_into_pieces.py) that takes a specified image from folder [pics](pics), a cutting pattern from folder [patterns](patterns) and generates multiple image files each containing one single piece of the puzzle, in the same folder.
 
 2. Script [generate_scatter.py](generate_scatter.py) that takes the output images from the previous script, applies random rotations to them and put them all on a specified background, on one signle image.
 
