@@ -17,4 +17,4 @@ This final [image](puzzle_unsolved.jpg) is the starting point for your solution.
 
 ## What to do
 Files [1_segment_pieces.py](1_segment_pieces.py), [2_extract_features.py](2_extract_features.py)
-[3_orient_pieces](3_orient_pieces) are for you to complete. Please see the concrete tasks in the corresponding files. Your ouputs should be written to the provided folders [results](results) and [segmented](\egmented)
+[3_orient_pieces](3_orient_pieces) are for you to complete. Please see the concrete tasks in the corresponding files. Your ouputs should be written to the provided folders [results](results) and [segmented](segmented)
