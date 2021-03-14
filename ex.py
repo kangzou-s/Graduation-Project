@@ -46,22 +46,44 @@ for i in range(len(contours)):
 
 	piece = copy.deepcopy(pre)
 	piece[mask > 0] = 0
+	rows,cols=piece.shape[:2]
+
 	
 	'''cv.imshow('',piece)
 	cv.waitKey(0)'''
 	
 	x,y,w,h = cv.boundingRect(contours[i])
 	print(x, y, w, h)
-	pieces.append(piece[y:y+h, x:x+w])
-
-	cv.imshow('',piece)
+	a = piece[y:y+h, x:x+w]
+	
+	cv.imshow('',a)
 	cv.waitKey(0)
 
+
+	rect = cv.minAreaRect(contours[i])
+	x,y = np.int0(rect[0])
+	w,h = np.int0(rect[1])
+	M = cv.getRotationMatrix2D((x,y),rect[2],1)
+	piece = cv.warpAffine(a,M,(cols,rows))
+
+
+	'''cv.imshow('',piece)
+	cv.waitKey(0)'''
+
+	
+	
+	
+
+
+
+	x,y,w,h = cv.boundingRect(contours[i])
+	#print(x, y, w, h)
+	pieces.append(piece[y:y+h, x:x+w])
 
 side = np.ceil(np.sqrt(len(pieces)))
 for i in range(len(pieces)):
 	plt.subplot(side, side, i+1), plt.imshow(pieces[i])
-	cv.imwrite('./segmented/piece_'+str(i)+'.png', pieces[i])
+	#cv.imwrite('piece_'+str(i)+'.png', pieces[i])
 	
 plt.show()
 

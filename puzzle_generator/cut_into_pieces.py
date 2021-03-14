@@ -4,7 +4,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 # Load pattern
-pattern = cv.imread('./patterns/4x4.jpg')
+pattern = cv.imread('./puzzle_generator/patterns/4x4.jpg')
 # Make grayscale
 pattern = (0.3*pattern[:,:,2] + 0.6*pattern[:,:,1] + 0.1*pattern[:,:,0]).astype(np.uint8)
 # Threshold
@@ -15,7 +15,7 @@ cv.imshow('',pattern)
 cv.waitKey(0)
 
 
-_, contours, _ = cv.findContours(pattern, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+contours, _ = cv.findContours(pattern, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
 print('Contour lengths: ', [len(i) for i in contours])
 
 res = np.ones(pattern.shape, dtype=np.uint8) * 255
