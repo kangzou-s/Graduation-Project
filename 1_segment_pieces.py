@@ -5,24 +5,23 @@ import cv2 as cv
 import numpy as np
 from matplotlib import pyplot as plt #import function library which will be used 
 
+#part1 Pretreatment
 pattern = cv.imread('./puzzle_generator/puzzle_unsolved.jpg')
 pre = cv.imread('./puzzle_generator/puzzle_unsolved.jpg')
 
-
+#Extract background
 pattern = cv.cvtColor(pattern,cv.COLOR_BGR2HSV)
-
 lower_green = np.array([45,50,50])
 upper_green = np.array([81,255,255])
 mask1 = cv.inRange(pattern,lower_green,upper_green)
 res = cv.bitwise_and(pattern,pattern, mask= mask1)
 pattern = cv.cvtColor(res,cv.COLOR_HSV2BGR)
 
+#change to binary image
 pattern = (0.3*pattern[:,:,2] + 0.6*pattern[:,:,1] + 0.1*pattern[:,:,0]).astype(np.uint8)
 pattern = 255 * (pattern < 142).astype(np.uint8)
 
 
-'''cv.imshow('',pattern)
-cv.waitKey(0)'''
 
 #part 2 find contour
 
@@ -35,9 +34,7 @@ print('Contour lengths: ', [len(i) for i in contours])
 res = np.ones(pattern.shape, dtype=np.uint8) * 255
 cv.drawContours(res, contours, -1, (100,100,100), thickness=cv.FILLED)
 
-'''cv.imshow('',res)
-cv.waitKey(0)'''
-
+#cut pieces
 pieces = []
 for i in range(len(contours)):
 	mask = np.ones(pattern.shape, dtype=np.uint8)*255
@@ -46,9 +43,6 @@ for i in range(len(contours)):
 
 	piece = copy.deepcopy(pre)
 	piece[mask > 0] = 0
-	
-	'''cv.imshow('',piece)
-	cv.waitKey(0)'''
 	
 	x,y,w,h = cv.boundingRect(contours[i])
 	print(x, y, w, h)
