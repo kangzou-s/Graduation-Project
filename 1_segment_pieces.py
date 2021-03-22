@@ -22,7 +22,6 @@ pattern = (0.3*pattern[:,:,2] + 0.6*pattern[:,:,1] + 0.1*pattern[:,:,0]).astype(
 pattern = 255 * (pattern < 142).astype(np.uint8)
 
 kernel = np.ones((5,5),np.uint8)
-#pattern = cv.morphologyEx(pattern,cv.MORPH_OPEN,kernel)
 kernel2 = np.ones((3,3),np.uint8)
 pattern = cv.erode(pattern,kernel,iterations = 1)
 pattern = cv.dilate(pattern,kernel2,iterations = 1)
