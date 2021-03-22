@@ -17,12 +17,15 @@ mask1 = cv.inRange(pattern,lower_green,upper_green)
 res = cv.bitwise_and(pattern,pattern, mask= mask1)
 pattern = cv.cvtColor(res,cv.COLOR_HSV2BGR)
 
-#change to binary image
+#change to binary image and make filter
 pattern = (0.3*pattern[:,:,2] + 0.6*pattern[:,:,1] + 0.1*pattern[:,:,0]).astype(np.uint8)
 pattern = 255 * (pattern < 142).astype(np.uint8)
 
-
-
+kernel = np.ones((5,5),np.uint8)
+#pattern = cv.morphologyEx(pattern,cv.MORPH_OPEN,kernel)
+kernel2 = np.ones((3,3),np.uint8)
+pattern = cv.erode(pattern,kernel,iterations = 1)
+pattern = cv.dilate(pattern,kernel2,iterations = 1)
 #part 2 find contour
 
 contours, _ = cv.findContours(pattern, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
