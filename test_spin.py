@@ -17,17 +17,20 @@ pattern = 255 * (pattern > 5 ).astype(np.uint8)
 '''cv.imshow('',pattern)
 cv.waitKey(0)'''
 
-
+#get contours and make a convert for uint to float
 contours, _ = cv.findContours(pattern, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
 print(contours[0])
 contours = [list(map(float,point[0])) for point in contours[0]]
+
+#change origin from top-left to centre 
 for i in range(len(contours)):
 	contours[i][0] = math.atan((contours[i][0]-rows/2))
 	contours[i][1] = (contours[i][1]-cols/2)	
 
+
+#use two new variable to store coordinates, finally coor stores the (phi,rho) and give the value to phi,rho
 coor1= contours
 coor = contours
-a=len(coor)
 phi=np.ones([1,len(coor)],dtype=np.float)
 rho=np.ones([1,len(coor)],dtype=np.float)
 for i in range(len(coor)): 
@@ -39,6 +42,8 @@ for i in range(len(coor)):
 		coor[i][1]=math.sqrt(math.pow(coor1[i][0],2)+math.pow(coor1[i][1],2))
 	phi[0][i] = coor[i][0]
 	rho[0][i] = coor[i][1]
+
+
 print(phi)
 print(rho)
 plt.plot(phi[0],rho[0])
