@@ -1,20 +1,30 @@
 # Scattered puzzle generator/collector
-This is a barebones basis for a student project on image processing with Python and OpenCV.
+This is a barebones basis for my graduation project on image processing with Python and OpenCV.
 
 
-## Required packages:
-* opencv2
-* numpy
-* matplotlib
+# The main task of this project
+Computer vision (CV) becomes a necessary part of many robotic and AI-related applications. CV allows the computer to estimate parameters of the environment in order to adapt or to interact with it. The objective of this project is to help me learn the basic and advanced techniques of image processing and OpenCV library. For that, I implement a program that takes an image of an unsolved jigsaw puzzle as the input and scans it to extract the puzzle pieces, align and categorize them.
 
-## How to use the provided scripts
-Folder [puzzle generator](puzzle_generator) contains:
-1. Script [cut_into_pieces.py](puzzle_generator/cut_into_pieces.py) that takes a specified image from folder [pics](puzzle_generator/pics), a cutting pattern from folder [patterns](puzzle_generator/patterns) and generates multiple image files each containing one single piece of the puzzle, in the same folder.
 
-2. Script [generate_scatter.py](puzzle_generator/generate_scatter.py) that takes the output images from the previous script, applies random rotations to them and put them all on a specified background, on one signle image.
 
-This final [image](puzzle_generator/puzzle_unsolved.jpg) is the starting point for your solution. Your task is to reverse the process: extract the pieces, orient them upright and analyse their morphology.
+# Required package
++ opneCv2
++ numpy
++ matploib
 
-## What to do
-Files [1_segment_pieces.py](/1_segment_pieces.py), [2_extract_features.py](/2_extract_features.py)
-[3_orient_pieces](/3_orient_pieces) are for you to complete. Please see the concrete tasks in the corresponding files. Your ouputs should be written to the provided folders [results](/results) and [segmented](/segmented)
+
+# The main process during the project
++ 03/14 Extract the pieces from a green background
++ 03/25 Change the orientation of pieces to a horizontal and vertical.
++ still doing
+
+# The main problems i have faced
++ Feeling so difficult to study with a tutorial which is all written in English
++ Threshold a picture in a proper method
++ Detect the corners of pieces because they are irregular.
+
+
+# Diagram
+
+
+# Code
