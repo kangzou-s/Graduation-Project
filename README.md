@@ -1,3 +1,5 @@
+# Still ongoing
+
 # Scattered puzzle generator/collector
 This is a barebones basis for my graduation project on image processing with Python and OpenCV.
 
